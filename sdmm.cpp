@@ -75,17 +75,17 @@ void CK_L()
 void CS_INIT()
 {
   
-  uBit.io.P3.setDigitalValue(0);
+  uBit.io.P8.setDigitalValue(0);
 }
 void CS_H()
 {
   
-  uBit.io.P3.setDigitalValue(1);
+  uBit.io.P8.setDigitalValue(1);
 }
 void CS_L()
 {
   
-  uBit.io.P3.setDigitalValue(0);
+  uBit.io.P8.setDigitalValue(0);
   
 }
 
