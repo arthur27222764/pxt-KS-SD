@@ -9,7 +9,6 @@
     },
     "files": [
         "README.md",
-        "main.ts",
         "sdmm.cpp",
         "cs11.ts",
         "im01.cpp",

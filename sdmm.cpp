@@ -15,7 +15,7 @@
 	MISO = P14
 	MOSI = P15
 	SCK = P13
-	CS = P16
+	CS = P3
 */
 
 
@@ -75,17 +75,17 @@ void CK_L()
 void CS_INIT()
 {
   
-  uBit.io.P16.setDigitalValue(0);
+  uBit.io.P3.setDigitalValue(0);
 }
 void CS_H()
 {
   
-  uBit.io.P16.setDigitalValue(1);
+  uBit.io.P3.setDigitalValue(1);
 }
 void CS_L()
 {
   
-  uBit.io.P16.setDigitalValue(0);
+  uBit.io.P3.setDigitalValue(0);
   
 }
 
