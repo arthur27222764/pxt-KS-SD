@@ -1,1 +1,1 @@
-// 在這裡測試；當此封包作為擴充功能時，將不會編譯此內容。
+// tests go here; this will not be compiled when this package is used as an extension.

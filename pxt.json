@@ -1,27 +1,58 @@
 {
-    "name": "pxt-ksbtest2",
-    "version": "0.0.0",
-    "description": "",
+    "name": "IM01",
+    "version": "0.1.8",
+    "description": "XinaBox new IM01 extension",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
-        "radio": "*",
         "microphone": "*"
     },
     "files": [
         "README.md",
-        "main.blocks",
-        "main.ts"
+        "main.ts",
+        "sdmm.cpp",
+        "cs11.ts",
+        "im01.cpp",
+        "diskio.h",
+        "ff.cpp",
+        "ff.h",
+        "ffconf.h"
     ],
     "testFiles": [
         "test.ts"
     ],
     "public": true,
-    "targetVersions": {
-        "target": "4.0.16",
-        "targetId": "microbit"
-    },
     "supportedTargets": [
+        "maker",
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj",
+    "panic_on_heap_full": 0,
+    "authors": [
+        "Luqmaan Baboo",
+        "KalbeAbbas",
+        "Bjarke Gotfredsen"
+    ],
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "private_addressing": 0,
+                    "advertising_timeout": 0,
+                    "tx_power": 0,
+                    "dfu_service": 0,
+                    "event_service": 0,
+                    "device_info_service": 0,
+                    "eddystone_url": 0,
+                    "eddystone_uid": 0,
+                    "open": 0,
+                    "pairing_mode": 0,
+                    "whitelist": 1,
+                    "security_level": "SECURITY_MODE_ENCRYPTION_NO_MITM",
+                    "partial_flashing": 1,
+                    "enabled": 0
+                }
+            }
+        }
+    }
 }
