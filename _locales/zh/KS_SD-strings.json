@@ -1,8 +1,9 @@
 {
   "KS_SD|block": "KS_SD",
+  "KS_SD.sizeOfFile|block": "%filename 檔案大小",
   "KS_SD.removeFile|block": "刪除檔案 %filename",
   "KS_SD.fileExist|block": "%filename 檔案存在",
-  "KS_SD.overwriteFile|block": "建立 %filename ，後寫入 %value",
+  "KS_SD.overwriteFile|block": "新建 %filename ，寫入 %value",
   "KS_SD.appendFile|block": "打開 %filename ，寫入 %value",
   "KS_SD.appendFileLine|block": "打開 %filename ，寫入 %value 後換行",
   "KS_SD.readFile|block": "讀取 %filename 內容"

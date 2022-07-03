@@ -3,7 +3,7 @@ namespace KS_SD {
     let sdFlag = false
     //%block="Size of file %filename"
     //%filename.defl="data.txt"
-    function sizeOfFile(filename: string): number {
+    export function sizeOfFile(filename: string): number {
         filename = truncateStringLength(filename)
         if (sdFlag == false) {
             createFolder("SD")
