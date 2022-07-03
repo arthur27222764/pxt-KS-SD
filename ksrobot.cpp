@@ -4,7 +4,9 @@
 #include "pxt.h"
 #include "pxtcore.h"
 
-namespace im01
+using namespace pxt;
+
+namespace kslib
 {
 //%
 void _mkdir()
@@ -101,4 +103,4 @@ String _read(String s)
     f_close(&Fil);
     return cpy_string;
 }
-} // namespace cs11
+} // namespace kslib

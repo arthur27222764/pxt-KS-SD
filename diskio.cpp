@@ -30,66 +30,7 @@ static SPI* allocSPI() {
 static SPI* p = NULL;
 
 
-/*void DO_INIT()
-{
-	  
-	 uBit.io.P14.setDigitalValue(0);
-}
 
-bool DO()
-{
-  
-  return uBit.io.P14.getDigitalValue();
-}
-
-void DI_INIT()
-{
-  
-  uBit.io.P15.setDigitalValue(0);
-}
-
-void DI_H()
-{
-  
-  uBit.io.P15.setDigitalValue(1);
-}
-void DI_L()
-{
-  
-  uBit.io.P15.setDigitalValue(0);
-}
-
-void CK_INIT()
-{
-  
-  uBit.io.P13.setDigitalValue(0);
-}
-void CK_H()
-{
-  
-  uBit.io.P13.setDigitalValue(1);
-}
-void CK_L()
-{
-  uBit.io.P13.setDigitalValue(0);
-}
-
-void CS_INIT()
-{
-  
-  uBit.io.P4.setDigitalValue(0);
-}
-void CS_H()
-{
-  
-  uBit.io.P4.setDigitalValue(1);
-}
-void CS_L()
-{
-  
-  uBit.io.P4.setDigitalValue(0);
-  
-}*/
 
 void dly_us(UINT n)
 {

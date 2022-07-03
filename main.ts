@@ -72,32 +72,32 @@ namespace KS_SD {
         return;
     }
 
-    //%shim=im01::_mkdir
+    //%shim=kslib::_mkdir
     function mkdir(): void {
         return
     }
 
-    //%shim=im01::_remove
+    //%shim=kslib::_remove
     function remove(filename: string): void {
         return
     }
 
-    //%shim=im01::_file
+    //%shim=kslib::_file
     function file(filename: string, v: string, x: number): boolean {
         return true
     }
 
-    //%shim=im01::_size
+    //%shim=kslib::_size
     function size(filename: string): number {
         return 1
     }
 
-    //%shim=im01::_exists
+    //%shim=kslib::_exists
     function exists(filename: string): boolean {
         return true
     }
 
-    //%shim=im01::_read
+    //%shim=kslib::_read
     function file_read(filename: string): string {
         return ""
     }

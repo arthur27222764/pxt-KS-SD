@@ -10,7 +10,7 @@
     "files": [
         "README.md",
         "main.ts",
-        "im01.cpp",
+        "ksrobot.cpp",
         "diskio.h",
         "diskio.cpp",
         "ff.cpp",
