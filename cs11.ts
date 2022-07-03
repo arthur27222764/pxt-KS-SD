@@ -12,7 +12,7 @@ namespace IM01 {
         return size(u)
     }
 
-    //%block="IM01 remove file"
+    //%block="IM01 remove file %u"
     //%u.defl="log.txt"
     export function removeFile(u: string): void {
         u = truncateStringLength(u)
