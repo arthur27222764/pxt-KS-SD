@@ -10,12 +10,23 @@
 #endif
 
 
-/*
-	MISO = P14
-	MOSI = P15
-	SCK = P13
-	CS = P3
-*/
+
+
+
+
+#define CS_H()        uBit.io.P4.setDigitalValue(1)     /* Set MMC CS "high" */
+#define CS_L()        uBit.io.P4.setDigitalValue(0)     /* Set MMC CS "low" */
+#define CK_H()        uBit.io.P13.setDigitalValue(1)    /* Set MMC SCLK "high" */
+#define CK_L()        uBit.io.P13.setDigitalValue(0)    /* Set MMC SCLK "low" */
+#define DI_H()        uBit.io.P15.setDigitalValue(1)    /* Set MMC DI "high" */
+#define DI_L()        uBit.io.P15.setDigitalValue(0)    /* Set MMC DI "low" */
+#define DO            uBit.io.P14.getDigitalValue()     /* Get MMC DO value (high:true, low:false) */
+#define CS_INIT()     uBit.io.P4.setDigitalValue(0)    
+#define CK_INIT()     uBit.io.P13.setDigitalValue(0)     
+#define DI_INIT()     uBit.io.P15.setDigitalValue(0)  
+#define DO_INIT()     uBit.io.P14.setDigitalValue(0)   
+#define dly_us(UINT n)       sleep_us(n)  
+
 
 
 static SPI* allocSPI() {
@@ -26,12 +37,12 @@ static SPI* allocSPI() {
 
 static SPI* p = NULL;
 
-void DO_INIT()
+
+/*void DO_INIT()
 {
 	  
 	 uBit.io.P14.setDigitalValue(0);
 }
-
 
 bool DO()
 {
@@ -91,7 +102,7 @@ void CS_L()
 void dly_us(UINT n)
 {
   sleep_us(n);
-}
+}*/
 
 #define CMD0 (0)
 #define CMD1 (1)
