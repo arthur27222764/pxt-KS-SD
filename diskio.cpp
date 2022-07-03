@@ -9,25 +9,17 @@
 #define PinCompat MicroBitPin
 #endif
 
-
-
-
-
-
-#define CS_H()        uBit.io.P4.setDigitalValue(1)     /* Set MMC CS "high" */
-#define CS_L()        uBit.io.P4.setDigitalValue(0)     /* Set MMC CS "low" */
-#define CK_H()        uBit.io.P13.setDigitalValue(1)    /* Set MMC SCLK "high" */
-#define CK_L()        uBit.io.P13.setDigitalValue(0)    /* Set MMC SCLK "low" */
-#define DI_H()        uBit.io.P15.setDigitalValue(1)    /* Set MMC DI "high" */
-#define DI_L()        uBit.io.P15.setDigitalValue(0)    /* Set MMC DI "low" */
-#define DO            uBit.io.P14.getDigitalValue()     /* Get MMC DO value (high:true, low:false) */
-#define CS_INIT()     uBit.io.P4.setDigitalValue(0)    
-#define CK_INIT()     uBit.io.P13.setDigitalValue(0)     
-#define DI_INIT()     uBit.io.P15.setDigitalValue(0)  
-#define DO_INIT()     uBit.io.P14.setDigitalValue(0)   
-#define dly_us(UINT n)       sleep_us(n)  
-
-
+#define CS_H() uBit.io.P4.setDigitalValue(1);           /* Set MMC CS "high" */
+#define CS_L() uBit.io.P4.setDigitalValue(0);           /* Set MMC CS "low" */
+#define CK_H() uBit.io.P13.setDigitalValue(1);          /* Set MMC SCLK "high" */
+#define CK_L() uBit.io.P13.setDigitalValue(0);          /* Set MMC SCLK "low" */
+#define DI_H() uBit.io.P15.setDigitalValue(1);          /* Set MMC DI "high" */
+#define DI_L() uBit.io.P15.setDigitalValue(0);          /* Set MMC DI "low" */
+#define DO uBit.io.P14.getDigitalValue();               /* Get MMC DO value (high:true, low:false) */
+#define CS_INIT() uBit.io.P4.setDigitalValue(0);
+#define CK_INIT() uBit.io.P13.setDigitalValue(0);
+#define DI_INIT() uBit.io.P15.setDigitalValue(0);
+#define DO_INIT() uBit.io.P14.setDigitalValue(0);
 
 static SPI* allocSPI() {
 	SPI* spi = NULL;
@@ -97,12 +89,12 @@ void CS_L()
   
   uBit.io.P4.setDigitalValue(0);
   
-}
+}*/
 
 void dly_us(UINT n)
 {
   sleep_us(n);
-}*/
+}
 
 #define CMD0 (0)
 #define CMD1 (1)
