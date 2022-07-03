@@ -16,7 +16,7 @@
         "ff.cpp",
         "ff.h",
         "ffconf.h",
-        "_locales/zh/KSSD-strings.json"
+        "_locales/zh/KS_SD-strings.json"
     ],
     "testFiles": [
         "test.ts"
