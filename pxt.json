@@ -9,10 +9,10 @@
     },
     "files": [
         "README.md",
-        "sdmm.cpp",
         "main.ts",
         "im01.cpp",
         "diskio.h",
+        "diskio.cpp",
         "ff.cpp",
         "ff.h",
         "ffconf.h",
