@@ -4,6 +4,7 @@
 
 typedef BYTE DSTATUS;
 
+
 typedef enum
 {
 	RES_OK = 0,
