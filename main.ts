@@ -1,4 +1,4 @@
-//% color="#444444" icon="\uf07b" weight=95 block="KS_SD"
+//% color="#444444" icon="\uf07b" weight=10 block="KS_SD"
 namespace KS_SD {
     let sdFlag = false
     //%block="Size of file %filename"
