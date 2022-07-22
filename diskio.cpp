@@ -230,7 +230,8 @@ DSTATUS disk_initialize(
   if(!enabled)
   {
 	  p = allocSPI();
-	  p->frequency(1000000);
+	  //p->frequency(1000000);
+    p->frequency(4000000);
 	  p->format(8, 0);
 	  enabled = true;
 	  uBit.serial.send("Called!\n");
