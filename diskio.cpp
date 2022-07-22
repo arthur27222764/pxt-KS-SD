@@ -23,8 +23,7 @@
 
 static SPI* allocSPI() {
 	SPI* spi = NULL;
-        //spi = new SPI(MOSI, MISO, SCK);
-        spi = new SPI(uBit.io.P15, uBit.io.P14, uBitio.P13);
+        spi = new SPI(MOSI, MISO, SCK);
         return spi;
 }
 
