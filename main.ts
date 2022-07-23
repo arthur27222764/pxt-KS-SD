@@ -34,18 +34,26 @@ namespace KS_SD {
         }
         return exists(filename)
     }
-
+    /*
     //%block="Overwrite file %filename with %value"
     //%filename.defl="data.txt"
     export function overwriteFile(filename: string, value: string): void {
         
         file(filename, value, 0x02 | 0x08)
         return
+    }*/
+
+    //%block="Append file %filename with number %value"
+    //%filename.defl="data.txt"
+    export function appendFile_number(filename: string, value: number): void {
+        
+        file(filename, convertToText(value), 0x02 | 0x30)
+        return
     }
 
-    //%block="Append file %filename with %value"
+    //%block="Append file %filename with string %value"
     //%filename.defl="data.txt"
-    export function appendFile(filename: string, value: string): void {
+    export function appendFile_string(filename: string, value: string): void {
         
         file(filename, value, 0x02 | 0x30)
         return
@@ -53,7 +61,7 @@ namespace KS_SD {
 
     //%block="Append file %filename with line %value"
     //%filename.defl="data.txt"
-    export function appendFileLine(filename: string, value: string): void {
+    export function appendFileLine_string(filename: string, value: string): void {
         
         file(filename, value + "\n", 0x02 | 0x30)
         return

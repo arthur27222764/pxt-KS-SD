@@ -3,9 +3,9 @@
   "KS_SD.sizeOfFile|block": "%filename 檔案大小",
   "KS_SD.removeFile|block": "刪除檔案 %filename",
   "KS_SD.fileExist|block": "%filename 檔案存在",
-  "KS_SD.overwriteFile|block": "新建 %filename ，寫入 %value",
-  "KS_SD.appendFile|block": "打開 %filename ，寫入 %value",
-  "KS_SD.appendFileLine|block": "打開 %filename ，寫入 %value 後換行",
+  "KS_SD.appendFile_number|block": "打開 %filename ，寫入數值 %value",
+  "KS_SD.appendFile_string|block": "打開 %filename ，寫入字串 %value",
+  "KS_SD.appendFileLine_string|block": "打開 %filename ，寫入字串 %value 後換行",
   "KS_SD.readFile|block": "讀取 %filename 內容"
   
  
