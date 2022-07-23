@@ -103,11 +103,11 @@ namespace KS_SD {
     }
 
     function truncateStringLength(filename: string): string {
-        let i = filename.indexOf(".")
+        /*let i = filename.indexOf(".")
         let ext = filename.substr(i, filename.length)
         if (i > 8) {
             filename = filename.substr(0, 8) + ext
-        }
+        }*/
         return filename
     }
 	
