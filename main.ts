@@ -4,7 +4,7 @@ namespace KS_SD {
     //%block="Size of file %filename"
     //%filename.defl="data.txt"
     export function sizeOfFile(filename: string): number {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         if (sdFlag == false) {
             createFolder("SD")
             sdFlag = true
@@ -15,7 +15,7 @@ namespace KS_SD {
     //%block="Remove file %filename"
     //%filename.defl="data.txt"
     export function removeFile(filename: string): void {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         if (sdFlag == false) {
             createFolder("SD")
             sdFlag = true
@@ -27,7 +27,7 @@ namespace KS_SD {
     //%block="File %filename exists"
     //%filename.defl="data.txt"
     export function fileExist(filename: string): boolean {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         if (sdFlag == false) {
             createFolder("SD")
             sdFlag = true
@@ -38,7 +38,7 @@ namespace KS_SD {
     //%block="Overwrite file %filename with %value"
     //%filename.defl="data.txt"
     export function overwriteFile(filename: string, value: string): void {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         file(filename, value, 0x02 | 0x08)
         return
     }
@@ -46,7 +46,7 @@ namespace KS_SD {
     //%block="Append file %filename with %value"
     //%filename.defl="data.txt"
     export function appendFile(filename: string, value: string): void {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         file(filename, value, 0x02 | 0x30)
         return
     }
@@ -54,7 +54,7 @@ namespace KS_SD {
     //%block="Append file %filename with line %value"
     //%filename.defl="data.txt"
     export function appendFileLine(filename: string, value: string): void {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         file(filename, value + "\n", 0x02 | 0x30)
         return
     }
@@ -62,7 +62,7 @@ namespace KS_SD {
     //%block="Read file %filename"
     //%filename.defl="data.txt"
     export function readFile(filename: string): string {
-        filename = truncateStringLength(filename)
+        //filename = truncateStringLength(filename)
         return file_read(filename)
     }
 
@@ -102,14 +102,14 @@ namespace KS_SD {
         return ""
     }
 
-    function truncateStringLength(filename: string): string {
-        /*let i = filename.indexOf(".")
+    /*function truncateStringLength(filename: string): string {
+        let i = filename.indexOf(".")
         let ext = filename.substr(i, filename.length)
         if (i > 8) {
             filename = filename.substr(0, 8) + ext
-        }*/
+        }
         return filename
-    }
+    }*/
 	
 	//mkdir()
 
