@@ -233,7 +233,7 @@ DSTATUS disk_initialize(
     p->frequency(4000000);
     p->format(8, 0);
     enabled = true;
-    uBit.serial.send("Called!\n");
+    //uBit.serial.send("Called!\n");
   }
 
   for (n = 10; n; n--)
