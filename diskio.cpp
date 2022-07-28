@@ -226,15 +226,15 @@ DSTATUS disk_initialize(
   CS_INIT();
   CS_H();
 
-  /*if (!enabled)
+  if (!enabled)
   {
     p = allocSPI();
     // p->frequency(1000000);
     p->frequency(4000000);
     p->format(8, 0);
     enabled = true;
-    uBit.serial.send("Called!\n");
-  }*/
+    //uBit.serial.send("Called!\n");
+  }
 
   for (n = 10; n; n--)
   {
@@ -244,10 +244,10 @@ DSTATUS disk_initialize(
   CS_L();
 
   ty = 0;
-  while (send_cmd(CMD0, 0) != 1)
+  /*while (send_cmd(CMD0, 0) != 1)
   {
     uBit.serial.send("Failed! \n");
-  }
+  }*/
 
   if (send_cmd(CMD8, 0x1AA) == 1)
   {
