@@ -230,8 +230,8 @@ DSTATUS disk_initialize(
   {
     p = allocSPI();
     // p->frequency(1000000);
-    p->frequency(4000000);
-    p->format(8, 0);
+    //p->frequency(4000000);
+    //p->format(8, 0);
     enabled = true;
     
   }
@@ -246,7 +246,7 @@ DSTATUS disk_initialize(
   ty = 0;
   while (send_cmd(CMD0, 0) != 1)
   {
-    //uBit.serial.send("Failed! \n");
+    
   }
 
   if (send_cmd(CMD8, 0x1AA) == 1)
