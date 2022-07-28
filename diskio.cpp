@@ -9,28 +9,26 @@
 #define PinCompat MicroBitPin
 #endif
 
-#define CS_H() uBit.io.P4.setDigitalValue(1);           /* Set MMC CS "high" */
-#define CS_L() uBit.io.P4.setDigitalValue(0);           /* Set MMC CS "low" */
-#define CK_H() uBit.io.P13.setDigitalValue(1);          /* Set MMC SCLK "high" */
-#define CK_L() uBit.io.P13.setDigitalValue(0);          /* Set MMC SCLK "low" */
-#define DI_H() uBit.io.P15.setDigitalValue(1);          /* Set MMC DI "high" */
-#define DI_L() uBit.io.P15.setDigitalValue(0);          /* Set MMC DI "low" */
-#define DO uBit.io.P14.getDigitalValue();               /* Get MMC DO value (high:true, low:false) */
+#define CS_H() uBit.io.P4.setDigitalValue(1);  /* Set MMC CS "high" */
+#define CS_L() uBit.io.P4.setDigitalValue(0);  /* Set MMC CS "low" */
+#define CK_H() uBit.io.P13.setDigitalValue(1); /* Set MMC SCLK "high" */
+#define CK_L() uBit.io.P13.setDigitalValue(0); /* Set MMC SCLK "low" */
+#define DI_H() uBit.io.P15.setDigitalValue(1); /* Set MMC DI "high" */
+#define DI_L() uBit.io.P15.setDigitalValue(0); /* Set MMC DI "low" */
+#define DO uBit.io.P14.getDigitalValue();      /* Get MMC DO value (high:true, low:false) */
 #define CS_INIT() uBit.io.P4.setDigitalValue(0);
 #define CK_INIT() uBit.io.P13.setDigitalValue(0);
 #define DI_INIT() uBit.io.P15.setDigitalValue(0);
 #define DO_INIT() uBit.io.P14.setDigitalValue(0);
 
-static SPI* allocSPI() {
-	SPI* spi = NULL;
-        spi = new SPI(MOSI, MISO, SCK);
-        return spi;
+static SPI *allocSPI()
+{
+  SPI *spi = NULL;
+  spi = new SPI(MOSI, MISO, SCK);
+  return spi;
 }
 
-static SPI* p = NULL;
-
-
-
+static SPI *p = NULL;
 
 void dly_us(UINT n)
 {
@@ -67,7 +65,7 @@ static void xmit_mmc(
   do
   {
     d = *buff++;
-	p->write((int)d);
+    p->write((int)d);
   } while (--bc);
 }
 
@@ -178,10 +176,11 @@ static BYTE send_cmd(
       return n;
   }
 
-  
-  	/* Select the card */
-	CS_H(); rcvr_mmc(dummy, 1);
-	CS_L(); rcvr_mmc(dummy, 1);
+  /* Select the card */
+  CS_H();
+  rcvr_mmc(dummy, 1);
+  CS_L();
+  rcvr_mmc(dummy, 1);
 
   buf[0] = 0x40 | cmd;
   buf[1] = (BYTE)(arg >> 24);
@@ -197,10 +196,10 @@ static BYTE send_cmd(
   xmit_mmc(buf, 6);
 
   n = 0xFF;
-  do{
+  do
+  {
     rcvr_mmc(&d, 1);
-  }
-  while ((d & 0x80) && --n);
+  } while ((d & 0x80) && --n);
 
   return d;
 }
@@ -227,77 +226,74 @@ DSTATUS disk_initialize(
   CS_INIT();
   CS_H();
 
-  if(!enabled)
+  /*if (!enabled)
   {
-	  p = allocSPI();
-	  //p->frequency(1000000);
+    p = allocSPI();
+    // p->frequency(1000000);
     p->frequency(4000000);
-	  p->format(8, 0);
-	  enabled = true;
-	  uBit.serial.send("Called!\n");
-  }
+    p->format(8, 0);
+    enabled = true;
+    uBit.serial.send("Called!\n");
+  }*/
 
   for (n = 10; n; n--)
   {
     rcvr_mmc(buf, 1);
   }
-  
+
   CS_L();
 
   ty = 0;
-  while(send_cmd(CMD0, 0) != 1)
+  while (send_cmd(CMD0, 0) != 1)
   {
-	  uBit.serial.send("Failed! \n");
+    uBit.serial.send("Failed! \n");
   }
-  
-  
-    if (send_cmd(CMD8, 0x1AA) == 1)
+
+  if (send_cmd(CMD8, 0x1AA) == 1)
+  {
+    rcvr_mmc(buf, 4);
+
+    if (buf[2] == 0x01 && buf[3] == 0xAA)
     {
-      rcvr_mmc(buf, 4);
-	  
-      if (buf[2] == 0x01 && buf[3] == 0xAA)
-      {
-        for (tmr = 1000; tmr; tmr--)
-        {
-          if (send_cmd(ACMD41, 1UL << 30) == 0)
-            break;
-          dly_us(1000);
-        }
-        if (tmr && send_cmd(CMD58, 0) == 0)
-        {
-          rcvr_mmc(buf, 4);
-          ty = (buf[0] & 0x40) ? CT_SD2 | CT_BLOCK : CT_SD2;
-        }
-      }
-    }
-    else
-    {
-		
-      if (send_cmd(ACMD41, 0) <= 1)
-      {
-        ty = CT_SD1;
-        cmd = ACMD41;
-      }
-      else
-      {
-        ty = CT_MMC;
-        cmd = CMD1;
-      }
       for (tmr = 1000; tmr; tmr--)
       {
-        if (send_cmd(cmd, 0) == 0)
+        if (send_cmd(ACMD41, 1UL << 30) == 0)
           break;
         dly_us(1000);
       }
-      if (!tmr || send_cmd(CMD16, 512) != 0)
-        ty = 0;
+      if (tmr && send_cmd(CMD58, 0) == 0)
+      {
+        rcvr_mmc(buf, 4);
+        ty = (buf[0] & 0x40) ? CT_SD2 | CT_BLOCK : CT_SD2;
+      }
     }
-	
+  }
+  else
+  {
+
+    if (send_cmd(ACMD41, 0) <= 1)
+    {
+      ty = CT_SD1;
+      cmd = ACMD41;
+    }
+    else
+    {
+      ty = CT_MMC;
+      cmd = CMD1;
+    }
+    for (tmr = 1000; tmr; tmr--)
+    {
+      if (send_cmd(cmd, 0) == 0)
+        break;
+      dly_us(1000);
+    }
+    if (!tmr || send_cmd(CMD16, 512) != 0)
+      ty = 0;
+  }
 
   CardType = ty;
   s = ty ? 0 : STA_NOINIT;
   Stat = s;
-  
 
   deselect();
 
