@@ -244,10 +244,10 @@ DSTATUS disk_initialize(
   CS_L();
 
   ty = 0;
-  /*while (send_cmd(CMD0, 0) != 1)
+  while (send_cmd(CMD0, 0) != 1)
   {
-    uBit.serial.send("Failed! \n");
-  }*/
+    //uBit.serial.send("Failed! \n");
+  }
 
   if (send_cmd(CMD8, 0x1AA) == 1)
   {
