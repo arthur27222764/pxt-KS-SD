@@ -9,6 +9,18 @@
 #define PinCompat MicroBitPin
 #endif
 
+using namespace pxt;
+
+namespace pins
+{
+  extern SPI *allocSPI();
+  extern int spiWrite(int value);
+  extern void spiFrequency(int frequency);
+  extern void spiFormat(int bits, int mode);
+  extern void spiTransfer(Buffer command, Buffer response);
+}
+using namespace pins;
+
 #define CS_H() uBit.io.P4.setDigitalValue(1);  /* Set MMC CS "high" */
 #define CS_L() uBit.io.P4.setDigitalValue(0);  /* Set MMC CS "low" */
 #define CK_H() uBit.io.P13.setDigitalValue(1); /* Set MMC SCLK "high" */
@@ -228,12 +240,13 @@ DSTATUS disk_initialize(
 
   if (!enabled)
   {
-    p = allocSPI();
+    /*p = allocSPI();
     p->frequency(1000000);
-    //p->frequency(4000000);
-    p->format(8, 0);
+    p->format(8, 0);*/
+    spiFormat(8, 0);
+    spiFrequency(1000000);
+
     enabled = true;
-    
   }
 
   for (n = 10; n; n--)
@@ -246,7 +259,6 @@ DSTATUS disk_initialize(
   ty = 0;
   while (send_cmd(CMD0, 0) != 1)
   {
-    
   }
 
   if (send_cmd(CMD8, 0x1AA) == 1)
