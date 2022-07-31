@@ -77,7 +77,8 @@ static void xmit_mmc(
   do
   {
     d = *buff++;
-    p->write((int)d);
+    //p->write((int)d);
+    spiWrite((int)d);
   } while (--bc);
 }
 
@@ -89,7 +90,9 @@ static void rcvr_mmc(
 
   do
   {
-    *buff++ = p->write(0xFF);
+    //*buff++ = p->write(0xFF);
+    *buff++ = spiWrite(0xFF);
+    
   } while (--bc);
 }
 
