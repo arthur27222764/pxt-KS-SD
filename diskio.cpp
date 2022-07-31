@@ -33,15 +33,6 @@ using namespace pins;
 #define DI_INIT() uBit.io.P15.setDigitalValue(0);
 #define DO_INIT() uBit.io.P14.setDigitalValue(0);
 
-/*static SPI *allocSPI()
-{
-  SPI *spi = NULL;
-  spi = new SPI(MOSI, MISO, SCK);
-  return spi;
-}
-
-static SPI *p = NULL;
-*/
 
 void dly_us(UINT n)
 {
