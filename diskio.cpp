@@ -231,8 +231,7 @@ DSTATUS disk_initialize(
     p = allocSPI();
     p->frequency(1000000);
     //p->frequency(4000000);
-    //p->format(8, 0);
-    p->format(8, 3);
+    p->format(8, 0);
     enabled = true;
     
   }
