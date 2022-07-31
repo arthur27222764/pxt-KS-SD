@@ -33,7 +33,7 @@ using namespace pins;
 #define DI_INIT() uBit.io.P15.setDigitalValue(0);
 #define DO_INIT() uBit.io.P14.setDigitalValue(0);
 
-static SPI *allocSPI()
+/*static SPI *allocSPI()
 {
   SPI *spi = NULL;
   spi = new SPI(MOSI, MISO, SCK);
@@ -41,6 +41,7 @@ static SPI *allocSPI()
 }
 
 static SPI *p = NULL;
+*/
 
 void dly_us(UINT n)
 {
@@ -77,7 +78,6 @@ static void xmit_mmc(
   do
   {
     d = *buff++;
-    //p->write((int)d);
     spiWrite((int)d);
   } while (--bc);
 }
@@ -90,7 +90,7 @@ static void rcvr_mmc(
 
   do
   {
-    //*buff++ = p->write(0xFF);
+    
     *buff++ = spiWrite(0xFF);
     
   } while (--bc);
@@ -243,11 +243,9 @@ DSTATUS disk_initialize(
 
   if (!enabled)
   {
-    /*p = allocSPI();
-    p->frequency(1000000);
-    p->format(8, 0);*/
+   
     spiFormat(8, 0);
-    spiFrequency(1000000);
+    spiFrequency(4000000);
 
     enabled = true;
   }
